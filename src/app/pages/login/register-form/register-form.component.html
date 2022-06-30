@@ -1,0 +1,48 @@
+<div class="register-form-wrap">
+  <form nz-form [formGroup]="registerForm" (submit)="register()">
+    <div formArrayName="contents">
+      <div
+        *ngFor="let item of contents.controls; let i = index"
+        [formGroupName]="i"
+        style="margin-bottom: 16px"
+      >
+        <nz-form-item>
+          <nz-form-control nzErrorTip="title">
+            <nz-input-group nzSize="large" nzPrefixIcon="mail">
+              <input
+                type="text"
+                nz-input
+                formControlName="title"
+                placeholder="Title"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="message">
+            <nz-input-group nzSize="large" nzPrefixIcon="mail">
+              <input
+                type="text"
+                nz-input
+                formControlName="message"
+                placeholder="Message"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <button nz-button nzType="default" (click)="removeContent(i)">
+          删除
+        </button>
+      </div>
+    </div>
+
+    <div nz-row style="margin-top: 16px">
+      <div nz-col [nzSpan]="12">
+        <button nz-button nzType="primary" (click)="addContent()">新增</button>
+      </div>
+      <div nz-col [nzSpan]="12">
+        <a routerLink="/login/login-form" style="float: right;">去登录</a>
+      </div>
+    </div>
+  </form>
+</div>
