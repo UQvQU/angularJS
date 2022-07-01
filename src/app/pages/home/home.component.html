@@ -1,15 +1,15 @@
-<nz-layout>
+<nz-layout class="home-container">
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
-    <div class="logo"></div>
+    <div class="logo">logo</div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
-      <li nz-submenu nzTitle="User" nzIcon="user">
+      <li nz-submenu nzTitle="User" nzIcon="user" [(nzOpen)]="openMap['user']" (nzOpenChange)="openChange('user')">
         <ul>
-          <li nz-menu-item>Tom</li>
-          <li nz-menu-item>Bill</li>
-          <li nz-menu-item>Alex</li>
+          <li nz-menu-item [nzSelected]="menu == 'Tom'"><a (click)="menu = 'Tom'">Tom</a></li>
+          <li nz-menu-item [nzSelected]="menu == 'Bill'" (click)="menu = 'Bill'">Bill</li>
+          <li nz-menu-item [nzSelected]="menu == 'Alex'" (click)="menu = 'Alex'">Alex</li>
         </ul>
       </li>
-      <li nz-submenu nzTitle="Team" nzIcon="team">
+      <li nz-submenu nzTitle="Team" nzIcon="team" [(nzOpen)]="openMap['team']" (nzOpenChange)="openChange('team')">
         <ul>
           <li nz-menu-item>Team 1</li>
           <li nz-menu-item>Team 2</li>
@@ -28,14 +28,20 @@
         nz-icon
         [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
         (click)="isCollapsed = !isCollapsed"
-      ></i>
+      ></i>header
     </nz-header>
     <nz-content>
-      <nz-breadcrumb>
+      <!-- <nz-breadcrumb>
         <nz-breadcrumb-item>User</nz-breadcrumb-item>
         <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
-      </nz-breadcrumb>
-      <div class="inner-content">Bill is a cat.</div>
+      </nz-breadcrumb> -->
+      <!-- <div class="inner-content">
+        <p>Bill is a cat.</p>{{menu}} -->
+        <app-tom *ngIf="menu == 'Tom'"></app-tom>
+        <app-alex *ngIf="menu == 'Alex'"></app-alex>
+        <app-bill *ngIf="menu == 'Bill'"></app-bill>
+      <!-- </div> -->
+
     </nz-content>
     <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
   </nz-layout>
