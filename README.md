@@ -32,4 +32,4 @@ ng g m pages/home --routing
 ng g c pages/home -c=OnPush  // 创建onPush模式的组件
 
 
-test
+test dev
