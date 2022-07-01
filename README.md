@@ -30,3 +30,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## 命令行
 ng g m pages/home --routing
 ng g c pages/home -c=OnPush  // 创建onPush模式的组件
+
+
+test
